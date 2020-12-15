@@ -89,13 +89,6 @@
             opacity: 1 !important;
         }
 
-        .iconbox {
-            border: none;
-            width: 100px;
-            height: 100px;
-            left: -120px;
-            position: absolute;
-        }
     </style>
 </head>
 
@@ -172,55 +165,6 @@
         //simulation.nodes(data.nodes).alphaTarget(0.3).restart()
     }
 
-    function loadIcons() {
-        //setup icons for the legend
-
-
-        ["refresh", "save"].forEach(function (i) {
-
-            iconbox.append('pattern')
-                .attr("patternUnits", "objectBoundingBox")
-                .attr('id', function () {
-                    let nm = i
-                    return nm;
-                })
-                .attr('height', 50)
-                .attr('width', 50)
-                .attr('x', 0)
-                .attr('y', 0)
-                .append('image')
-                .attr('xlink:href', function () {
-                    let nm = i
-                    return "/css/icons/" + nm + ".svg";
-                })
-                .attr('height', 50)
-                .attr('width', 50)
-                .attr('x', 0)
-                .attr('y', 0)
-        })
-
-
-        iconbox.append('pattern')
-            .attr("patternUnits", "objectBoundingBox")
-            .attr('id', "gryphon")
-            .attr('height', 80)
-            .attr('width', 80)
-            .attr('x', 0)
-            .attr('y', 0)
-            .append('image')
-            .attr('xlink:href', function () {
-                return "/css/icons/gryphon.svg";
-            })
-            .attr('height', 80)
-            .attr('width', 80)
-            .attr('x', 0)
-            .attr('y', 0)
-
-    }
-
-    var iconbox = d3.select(".iconbox").select("defs")
-
-    loadIcons()
 
     function showTooltip(d) {
         tooltip.selectAll("span").remove()
@@ -414,7 +358,7 @@
     var load = function (jdata) {
         jsonData = jdata
 
-        console.log(jsonData)
+        console.table(jsonData)
 
         domains = [...new Set(jsonData.map((d) => d.domain))];
 
@@ -526,63 +470,6 @@
     }
 
     function addLegend() {
-
-        //add refresh icon
-        /*let refresh = svg.append("rect")
-            .classed("icon", true)
-            .attr("x", 0)
-            .attr("y", 0)
-            .attr("rx", function () {
-                var r = 12
-                return r
-            })
-            .attr("ry", function () {
-                var r = 12
-                return r
-            })
-            .attr("width", function () {
-                let w = 50
-                return w
-            })
-            .attr("height", function () {
-                let h = 50
-                return h
-            })
-            .style("fill", function () {
-                return 'url(#refresh)';
-            })
-            .attr("transform", "translate(" + (width - 80) + ",20)")
-            .on("click", function () {
-                toggle_animation()
-            })*/
-
-
-
-        // add Gryphon icon
-        svg.append("rect")
-            .attr("x", 0)
-            .attr("y", 0)
-            .attr("rx", function () {
-                var r = 12
-                return r
-            })
-            .attr("ry", function () {
-                var r = 12
-                return r
-            })
-            .attr("width", function () {
-                let w = 80
-                return w
-            })
-            .attr("height", function () {
-                let h = 80
-                return h
-            })
-            .style("fill", function () {
-                return 'url(#gryphon)';
-            })
-            .attr("transform", "translate(" + (20) + ",20)")
-
 
         var legend_w = Math.max.apply(this, [...new Set(domains.map(function (d) {
             return (d.length * char_width) + 50
@@ -1004,10 +891,9 @@
 
 
     function  saveChanges (d) {
-        var encode_data = (d.entity_id).concat("-").concat(d.x/width).concat("-").concat(d.y/height)
+        var data = (d.entity_id).concat("-").concat(d.x/width).concat("-").concat(d.y/height)
 
-        var data_str = ("/").concat(encode_data.concat("?")) ;
-        var url = api_url.replace("?", data_str );
+        let url = "http://localhost:8888/d3-erd/erd_api.php?data="+data;
 
         var xhttp = new XMLHttpRequest();
         xhttp.open("POST", url, true);
@@ -1021,7 +907,7 @@
         return xhttp.send();
     }
     function getJsonData(load){
-        let url = "http://localhost:8888/d3-erd/erd_api.php?v=dev"
+        let url = "http://localhost:8888/d3-erd/erd_api.php?v=prod"
 
         var xhttp = new XMLHttpRequest();
 

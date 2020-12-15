@@ -1,4 +1,4 @@
-SET sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''));
+
 SELECT de.entity_name as entity,
        de.entity_name_singular as entity_key,
        de.id as entity_id,
