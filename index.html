@@ -11,10 +11,10 @@
 
         .title {
             position: absolute;
-            font-size: 1.5em;
+            font-size: 1.2em;
             color: rgba(50, 50, 50, .6);
-            top: 45px;
-            left: 130px;
+            top: 30px;
+            left: 60px;
             letter-spacing: .5em;
         }
 
@@ -104,10 +104,9 @@
 !(function () {
     "use strict"
 
-    var jsonData = [];
+    var jsonData
     var data;
-    var api_url = window.location.href;
-    var is_fixed = 1;
+    var is_fixed = 1; // set to 0 to load the forceDirected Layout with animation
 
     var colorsindex = ["#ff9c9c", "#ffba92", "#fedfa7", "#d5e4b2", "#b3cfd5", "#b6abd8", "#cfa7e0", "#ffb5e5", "#fff5e6"]
     var panelcolors = ["#949da9", "#f8f9fa", "#000000"];
@@ -129,10 +128,7 @@
     var items_data = [];
     var link_data = []
     var icons = ["◆ ", "▢ ", "▢ "]
-    var cols = 5;
-    var rows = Math.ceil(jsonData.length / cols);
-    var col_spacing = (window.innerWidth * .75) / cols;
-    var row_spacing = (window.innerHeight * .75) / rows;
+    var cols,rows,col_spacing,row_spacing;
 
     var line
     var svg = d3.select("#graph").append("svg")
@@ -153,8 +149,6 @@
         showTooltip()
     })
 
-
-    setSize()
 
     function toggle_animation() {
         console.log("toggle", is_fixed)
@@ -386,12 +380,18 @@
     function setSize() {
         width = window.innerWidth
         height = window.innerHeight
-        let title_text = "ER DIAGRAM - [" + width + " " + height + "]"
+
+        cols = 5;
+        rows = Math.ceil(jsonData.length / cols);
+        col_spacing = (window.innerWidth * .75) / cols;
+        row_spacing = (window.innerHeight * .75) / rows;
+
+        let title_text = "ENTERPRISE ARCHITECTURE ERD"
 
         d3.select(".title")
             .html(title_text)
 
-        let size_scale = height < 1000 || width < 1500 ? .4 : .7
+        let size_scale = height < 1000 || width < 1500 ? .8 : 1
 
         char_width = char_width * size_scale// width of one character
         row_height = 22 * size_scale
@@ -906,7 +906,15 @@
         }
         return xhttp.send();
     }
-    function getJsonData(load){
+    function getJsonData(callback){
+
+         if(!callback){
+             d3.json('data/sample_data.json',function(data){
+                 load(data);
+             })
+         }
+
+
         let url = "http://localhost:8888/d3-erd/erd_api.php?v=prod"
 
         var xhttp = new XMLHttpRequest();
@@ -917,14 +925,18 @@
             if (this.readyState === 4 && this.status === 200 ) {
                 var rt = xhttp.responseText;
                 let jData = JSON.parse(xhttp.responseText)
-                console.table(jData)
-                if(load) {load(jData)}
+                console.log(jData)
+                if(callback) {load(jData)}
             }
         }
         xhttp.send();
 
     }
-    getJsonData(load)
+
+    // call getJsonData(callback) to use the api to retrieve the ER data from a database
+    // otherwise load the local json sample data
+
+    getJsonData()
 
 }());
 </script>

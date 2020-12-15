@@ -1,0 +1,50 @@
+[
+  {
+    "entity": "assessments",
+    "entity_key": "assessment",
+    "entity_id": "16",
+    "fixed_x": "0.638562",
+    "fixed_y": "0.291789",
+    "physical": "1",
+    "status": "0",
+    "description": null,
+    "items": "1:id:id for the assessment record:,1:request_id:id for the request record:1M",
+    "domain": "Clinical Assessments"
+  },
+  {
+    "entity": "invoices",
+    "entity_key": "invoice",
+    "entity_id": "15",
+    "fixed_x": "0.637302",
+    "fixed_y": "0.562589",
+    "physical": "0",
+    "status": "1",
+    "description": null,
+    "items": "1:id:primary key:,0:amount:total amount of the invoice:",
+    "domain": "Finance"
+  },
+  {
+    "entity": "line_of_businesses",
+    "entity_key": "line_of_business",
+    "entity_id": "3",
+    "fixed_x": "0.165267",
+    "fixed_y": "0.542181",
+    "physical": "1",
+    "status": "1",
+    "description": null,
+    "items": "1:id:id for record:,1:line_of_business_name:line_of_business_name:",
+    "domain": "Business Analytics"
+  },
+  {
+    "entity": "requests",
+    "entity_key": "request",
+    "entity_id": "4",
+    "fixed_x": "0.350050",
+    "fixed_y": "0.414238",
+    "physical": "1",
+    "status": "1",
+    "description": null,
+    "items": "1:id:auto increment primary key:,1:line_of_business_id:identifier for line of business:11,1:invoice_id:invoice_id:01",
+    "domain": "Clinical Services"
+  }
+]
