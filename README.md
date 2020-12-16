@@ -8,23 +8,23 @@ This solution was just one facet of a larger Enterprise Architecture project und
 
 The Data Dictionary was used as the source of data driving the ERD. Whatever the data source the model should be as follows:
 
-   entity:      name of entity (can be singular or plural)
-   
-   entity_key:  singular name of entity  (must be singular as its used to create the relationships)
-   
-   entity_id:   unique entity id
-   
-   fixed_x:     x position as a decimal (percentage),
-   
-   fixed_y:     y position as a decimal (percentage),
-   
-   physical:    boolean indicator that data is physical or not,
-   
-   status":     boolean indicator that entity is approved for release,
-   
-   description: description of the data used for tooltips,
-   
-   items:       array of columns under each entity with these elements
+	   entity:      name of entity (can be singular or plural)
+
+	   entity_key:  singular name of entity  (must be singular as its used to create the relationships)
+
+	   entity_id:   unique entity id
+
+	   fixed_x:     x position as a decimal (percentage),
+
+	   fixed_y:     y position as a decimal (percentage),
+
+	   physical:    boolean indicator that data is physical or not,
+
+	   status":     boolean indicator that entity is approved for release,
+
+	   description: description of the data used for tooltips,
+
+	   items:       array of columns under each entity with these elements delimited by ":"
    
                 status:boolean indicator that data is approved for release,
                 
