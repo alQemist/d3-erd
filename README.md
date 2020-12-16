@@ -34,7 +34,7 @@ The Data Dictionary was used as the source of data driving the ERD. Whatever the
                 
                 relationship: optional, one of the following values
 		
-                              11 - One and only One
+				11 - One and only One
 				1M - One or Many
 				M - Many
 				01 - Zero or One
