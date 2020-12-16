@@ -32,12 +32,14 @@ The Data Dictionary was used as the source of data driving the ERD. Whatever the
                 
                 description: column description
                 
-                relationship: optional one of the following values
-                              1 = One
-                              01 = Zero or One
-                              11 = One only One
-                              1M = One or Many
-                              0M = Zero or Many
+                relationship: optional, one of the following values
+		
+                              	11 - One and only One
+				1M - One or Many
+				M - Many
+				01 - Zero or One
+				0M - Zero or Many
+				arrow - included for miscellaneous use
                               
    domain:      name of domain the entity is under
    
