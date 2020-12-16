@@ -1,0 +1,84 @@
+html, body, #graph {
+    font-family: 'Roboto', sans-serif;
+}
+
+.title {
+    position: absolute;
+    font-size: 1.2em;
+    color: rgba(50, 50, 50, .6);
+    top: 30px;
+    left: 60px;
+    letter-spacing: .5em;
+}
+
+.icon {
+    cursor: pointer;
+}
+
+.steps {
+    fill: none;
+    stroke-width: 2px;
+}
+.nodes{
+    opacity:1;
+}
+.polymarker{
+    fill:black;
+    stroke: black;
+    stroke-width:3px;
+}
+
+.panel {
+    stroke-width: 2px;
+}
+
+text {
+    user-select: none;
+    font-family: 'Roboto', sans-serif;
+    cursor: pointer
+}
+
+node {
+    cursor: pointer;
+}
+
+svg {
+    bottom:-1000px;
+    position: absolute;
+}
+
+.label {
+    font-size: 1.1em;
+    font-weight: bold;
+}
+
+.legend {
+    letter-spacing: .1em;
+}
+
+.tooltip {
+    max-width: 400px;
+    min-width: 200px;
+    height: auto;
+    position: absolute;
+    top: 15%;
+    left: -4000px;
+    opacity: 0;
+    padding: 10px;
+    background: rgba(220, 220, 220, .9);
+    color: black;
+}
+
+.tool-content {
+    margin-top: 30px !important;
+    z-index: 0 !important;
+}
+
+.close {
+    background: #cacaca !important;
+    border-radius: 50% !important;
+    border: none !important;
+    width: 30px !important;
+    height: 30px !important;
+    opacity: 1 !important;
+}
