@@ -14,9 +14,9 @@ The Data Dictionary was used as the source of data driving the ERD. Whatever the
 
 	   entity_id:   unique entity id
 
-	   fixed_x:     x position as a decimal (percentage),
+	   *fixed_x:     x position as a decimal (percentage),
 
-	   fixed_y:     y position as a decimal (percentage),
+	   *fixed_y:     y position as a decimal (percentage),
 
 	   physical:    boolean indicator that data is physical or not,
 
@@ -34,7 +34,7 @@ The Data Dictionary was used as the source of data driving the ERD. Whatever the
                 
                 relationship: optional, one of the following values
 		
-                              	11 - One and only One
+                              11 - One and only One
 				1M - One or Many
 				M - Many
 				01 - Zero or One
@@ -56,3 +56,12 @@ The Data Dictionary was used as the source of data driving the ERD. Whatever the
 	    "items": "1:id:id for the assessment record:,1:request_id:id for the request record:1M",
 	    "domain": "Clinical Assessments"
 	  }
+
+* NOTE: fixed_x and fixed_y values are ignored if the setting below is 0, this allows the forceDirected layout to "run".
+If is_fixed = 1 then the entity (nodes) will be in fixed positions. 
+
+		var is_fixed = 0 
+
+DRAGGING AND SAVING NEW NODE POSITIONS:
+Saving new positions for dragged nodes happens automatically if the api.js is used. Otherwise its not possible using static json file as a datasource.
+
