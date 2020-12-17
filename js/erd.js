@@ -666,20 +666,18 @@
                 })
                 .attr("y", function (d) {
                     let new_y = d.fixed_y ? d.fixed_y : d.y;
-                    //return (new_y + setRectHeight(d) * -.5) - 80
                     return new_y - margin.top - row_height
                 });
 
             link
                 .attr("d", function (d) {
-                    //console.log(d)
-                    var t_mov_x = d.target.fixed_x < d.source.fixed_x || is_fixed == 0 ? -.55 : .55
+                    var t_mov_x = d.target.fixed_x < d.source.fixed_x || is_fixed == 0 ? -.52 : .52
                     var t_mov_y = d.target.fixed_y < d.source.fixed_y && is_fixed == 0 ? -.55 : 0
-                    var s_mov_x = d.source.fixed_x < d.target.fixed_x || is_fixed == 0 ? -.55 : .55
+                    var s_mov_x = d.source.fixed_x < d.target.fixed_x || is_fixed == 0 ? -.52 : .52
                     var a = []
-                    let new_sx = is_fixed ? d.source.fixed_x - (d.source.node_width * s_mov_x) - (10 * s_mov_x) : d.source.x - (d.source.node_width * s_mov_x) - (10 * s_mov_x);
+                    let new_sx = is_fixed ? d.source.fixed_x - ((d.source.node_width+20) * s_mov_x) : d.source.x - (d.source.node_width * s_mov_x) - (10 * s_mov_x);
                     let new_sy = is_fixed ? d.source.fixed_y + (row_height * .7) : d.source.y + (row_height * .7);
-                    let new_tx = is_fixed ? d.target.fixed_x - (d.target.node_width * t_mov_x) - (10 * t_mov_x) : d.target.x + (d.target.node_width * t_mov_x) - (10 * t_mov_x);
+                    let new_tx = is_fixed ? d.target.fixed_x - ((d.target.node_width+10) * t_mov_x)  : d.target.x + (d.target.node_width * t_mov_x) - (10 * t_mov_x);
                     let new_ty = is_fixed ? d.target.fixed_y + ((d.target_index) * row_height) + row_height : d.target.y;
                     a.push({x: new_sx, y: new_sy});
                     a.push({x: new_tx, y: new_ty});
@@ -691,7 +689,6 @@
                 .attr("x", function (d) {
                     let new_x = d.fixed_x ? d.fixed_x : d.x;
                     return new_x;
-                    //return d.x
                 })
                 .attr("y", function (d) {
                     let new_y = d.fixed_y ? d.fixed_y : d.y;
@@ -764,6 +761,6 @@
             svg.transition()
                 .duration(200)
                 .style("opacity", 1)
-                .style("bottom","0px")
+                .style("top","0px")
         }, 200)
     }

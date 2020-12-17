@@ -26,7 +26,7 @@
         .attr("viewBox", "0 0 130 130")
         .attr('markerHeight', 5)
         .attr('markerWidth', 8)
-        .attr('refX', 40)
+        .attr('refX', 60)
         .attr('refY', 60)
         .attr("orient", "auto")
         .attr("class","polymarker")

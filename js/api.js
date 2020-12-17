@@ -48,4 +48,4 @@ function getJsonData(callback){
 setTimeout(function(){
     //getJsonData() // loads data/sample_data.json
     getJsonData(load) // load data from database
-},1000)
+},100)
