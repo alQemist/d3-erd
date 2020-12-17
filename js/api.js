@@ -46,6 +46,6 @@ function getJsonData(callback){
 // otherwise load the local json sample data
 
 setTimeout(function(){
-    //getJsonData() // loads data/sample_data.json
-    getJsonData(load) // load data from database
+    getJsonData() // loads data/sample_data.json
+    //getJsonData(load) // load data from database
 },100)
