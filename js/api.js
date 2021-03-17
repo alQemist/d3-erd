@@ -39,7 +39,6 @@ function getJsonData(callback){
         }
     }
     xhttp.send();
-
 }
 
 // call getJsonData(callback) to use the api to retrieve the ER data from a database
